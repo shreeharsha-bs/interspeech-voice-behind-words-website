@@ -108,6 +108,123 @@
             color: #667eea;
             font-weight: bold;
         }
+        .study-banner {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            color: white;
+        }
+        .study-banner h2 {
+            margin: 0 0 15px 0;
+            font-size: 1.8em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .study-banner .results-link {
+            display: inline-block;
+            background: white;
+            color: #059669;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin: 15px 0;
+            transition: all 0.3s ease;
+        }
+        .study-banner .results-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .studies-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .study-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .study-card h3 {
+            color: #2d3748;
+            margin: 0 0 10px 0;
+            font-size: 1.3em;
+        }
+        .study-card .author {
+            color: #718096;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+        .study-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .study-meta span {
+            background: #f0fdf4;
+            color: #166534;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+        }
+        .study-card p {
+            color: #4a5568;
+            font-size: 0.95em;
+            line-height: 1.6;
+            margin: 10px 0;
+        }
+        .study-card ul {
+            color: #4a5568;
+            font-size: 0.9em;
+            line-height: 1.7;
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+        .study-card .requirements {
+            background: #f7fafc;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+        .study-card .requirements h4 {
+            margin: 0 0 10px 0;
+            color: #2d3748;
+            font-size: 0.95em;
+        }
+        .study-card .study-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+        .study-card .study-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+        .device-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        .device-icons span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.85em;
+            color: #718096;
+        }
     </style>
 </head>
 <body>
@@ -115,16 +232,79 @@
         <h1>🎯 Interactive AFM Bias Analysis</h1>
         <p class="subtitle">Exploring intersectional bias in Audio Foundation Models across accents, gender, and hesitation patterns</p>
         
-        <div class="info-box">
-            <h3>📊 About This Visualization</h3>
-            <p>This interactive analysis uses Principal Component Analysis (PCA) to visualize how different Audio Foundation Models (AFMs) respond to various demographic and contextual factors. Each plot allows you to:</p>
-            <ul class="features">
-                <li><strong>Hover</strong> over any point to see the full question and response</li>
-                <li><strong>Click</strong> legend items to filter specific groups</li>
-                <li><strong>Zoom</strong> and pan to explore clusters in detail</li>
-                <li><strong>Compare</strong> how accent, gender, and hesitation affect model responses</li>
-            </ul>
+        <!-- Prominent Study Results Banner -->
+        <div class="study-banner">
+            <h2>🔬 Participate in Our Research Studies</h2>
+            <p style="font-size: 1.1em; margin-bottom: 10px;">We're investigating how voice characteristics influence AI system responses. Join our studies to contribute to important research on fairness and bias in AI systems.</p>
+            <a href="https://drive.google.com/drive/u/0/folders/1Uef1_WJ2mwyfxX4CaSNLavmAW9nkKRCY" target="_blank" class="results-link">📁 View Study Results & Data</a>
+            
+            <div class="studies-section">
+                <!-- Study 1: Voice Conversion -->
+                <div class="study-card">
+                    <h3>🎙️ Voice Adaptive AI Study - Voice Conversion</h3>
+                    <p class="author">By Shree Harsha Bokkahalli Satish</p>
+
+                    <p><strong>Experience voice conversion technology firsthand!</strong></p>
+                    <p>In this study, you will:</p>
+                    <ul>
+                        <li>Record yourself asking an AI assistant 4 conversational questions</li>
+                        <li>Hear your voice converted to different gender/accent profiles</li>
+                        <li>Compare how the AI responds to your original voice vs. converted voices</li>
+                        <li>Reflect on differences you notice in the AI's behavior</li>
+                    </ul>
+                    <div class="requirements">
+                        <h4>📋 Requirements:</h4>
+                        <ul style="margin: 5px 0; padding-left: 20px;">
+                            <li>Computer with working microphone (recording deleted after exit)</li>
+                            <li>Quiet environment • English proficiency</li>
+                            <li>Chrome, Firefox, or Safari browser</li>
+                        </ul>
+                        <div class="device-icons">
+                            <span>🖥️ Desktop</span>
+                            <span>📱 Tablet</span>
+                            <span>🔊 Audio</span>
+                            <span>🎤 Microphone</span>
+                        </div>
+                    </div>
+                    <a href="https://testing-moshi--iui-voice-study-gradio-app.modal.run/" target="_blank" class="study-link">🚀 Start Voice Study</a>
+                </div>
+                
+                <!-- Study 2: Listening Task -->
+                <div class="study-card">
+                    <h3>🎧 Voice Adaptive AI Study - Listening Task</h3>
+                    <p class="author">By Shree Harsha Bokkahalli Satish</p>
+
+                    <p><strong>Evaluate AI conversations with different voices!</strong></p>
+                    <p>In this study, you will:</p>
+                    <ul>
+                        <li>Listen to 4 pre-recorded conversations between people and an AI</li>
+                        <li>Hear speakers with different genders and accents</li>
+                        <li>Rate the AI's responses on harm, acceptability, and trust</li>
+                        <li>Share observations about potential differences in AI responses</li>
+                    </ul>
+                    <div class="requirements">
+                        <h4>📋 Requirements:</h4>
+                        <ul style="margin: 5px 0; padding-left: 20px;">
+                            <li>Computer with speakers or headphones</li>
+                            <li>15-20 minutes of uninterrupted time</li>
+                            <li>No recording needed – just listening and evaluation</li>
+                            <li>Chrome, Firefox, or Safari browser</li>
+                        </ul>
+                        <div class="device-icons">
+                            <span>🖥️ Desktop</span>
+                            <span>📱 Tablet</span>
+                            <span>🔊 Audio</span>
+                        </div>
+                    </div>
+                    <a href="https://testing-moshi--iui-listener-study-gradio-app.modal.run/" target="_blank" class="study-link">🚀 Start Listening Study</a>
+                </div>
+            </div>
+            
+            <p style="margin-top: 20px; font-size: 0.95em;">📧 Questions? Contact: <a href="mailto:shbs@kth.se" style="color: white; font-weight: bold;">shbs@kth.se</a></p>
         </div>
+        
+        <h2 style="color: #2d3748; margin-top: 30px;">📊 The Speech Test Suite - SpeechLLM Responses</h2>
+        <p style="color: #718096; font-size: 1.1em; margin-bottom: 20px;">The Speech Test suite, SpeechLLM responses can be found below.</p>
         
         <div class="stats">
             <div class="stat">
