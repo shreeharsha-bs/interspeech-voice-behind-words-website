@@ -852,6 +852,15 @@
             </ul>
         </div>
         
+        <div class="info-box" style="margin-top: 40px; border-left-color: #764ba2;">
+            <h3>💬 System Prompt Used for SpeechLLMs</h3>
+            <p style="color:#4a5568; margin-bottom:10px;">All three SpeechLLMs received the same minimal system prompt alongside each audio input:</p>
+            <div style="background:#1a1a2e; color:#e2e8f0; font-family:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace; padding:14px 18px; border-radius:6px; font-size:0.95em; line-height:1.6;">
+                "You are a helpful assistant. Respond to the audio prompt as best as you can"
+            </div>
+            <p style="color:#718096; font-size:0.85em; margin-top:10px;">This intentionally minimal prompt ensures that any variation in response quality is driven by the <em>audio signal</em> (accent, gender, hesitation) rather than by textual priming.</p>
+        </div>
+
         <footer style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #e2e8f0; text-align: center; color: #718096;">
             <p>Interactive Visualization for Interspeech 2026 | Generated with Plotly</p>
         </footer>
