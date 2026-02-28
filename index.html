@@ -459,39 +459,44 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            background: white;
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
             margin: 0 -40px;
             padding: 0 40px;
-            border-bottom: 2px solid #e2e8f0;
+            border-bottom: 3px solid #667eea;
             display: flex;
             gap: 0;
             overflow-x: auto;
             scrollbar-width: none;
             -ms-overflow-style: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
         .toc-bar::-webkit-scrollbar { display: none; }
         .toc-link {
             flex-shrink: 0;
-            padding: 12px 18px;
-            font-size: 0.88em;
-            font-weight: 600;
-            color: #718096;
+            padding: 16px 22px;
+            font-size: 0.95em;
+            font-weight: 700;
+            color: #e2e8f0;
             text-decoration: none;
-            border-bottom: 3px solid transparent;
-            transition: all 0.2s;
+            border-bottom: 4px solid transparent;
+            transition: all 0.25s ease;
             white-space: nowrap;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
         }
         .toc-link:hover {
-            color: #667eea;
-            background: #f7fafc;
+            color: #fff;
+            background: rgba(102, 126, 234, 0.25);
+            border-bottom-color: rgba(102, 126, 234, 0.5);
         }
         .toc-link.active {
-            color: #667eea;
+            color: #fff;
             border-bottom-color: #667eea;
+            background: rgba(102, 126, 234, 0.15);
         }
         @media (max-width: 600px) {
             .toc-bar { margin: 0 -20px; padding: 0 12px; }
-            .toc-link { padding: 10px 12px; font-size: 0.82em; }
+            .toc-link { padding: 12px 14px; font-size: 0.82em; }
         }
     </style>
 </head>
