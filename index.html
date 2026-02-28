@@ -946,6 +946,11 @@
             variants.classList.add('show');
             el.textContent = el.textContent.replace('▸', '▾').replace('Show', 'Hide');
         }
+        // Update parent section-body maxHeight so expanded variants aren't clipped
+        var sectionBody = el.closest('.section-body');
+        if (sectionBody && !sectionBody.classList.contains('collapsed')) {
+            sectionBody.style.maxHeight = sectionBody.scrollHeight + 'px';
+        }
     }
 
     // Initialize sections as expanded
