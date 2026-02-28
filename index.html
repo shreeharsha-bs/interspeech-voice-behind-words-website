@@ -453,6 +453,46 @@
             border-top: 2px solid #e2e8f0;
             margin: 35px 0;
         }
+
+        /* ── Sticky TOC nav bar ── */
+        .toc-bar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: white;
+            margin: 0 -40px;
+            padding: 0 40px;
+            border-bottom: 2px solid #e2e8f0;
+            display: flex;
+            gap: 0;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .toc-bar::-webkit-scrollbar { display: none; }
+        .toc-link {
+            flex-shrink: 0;
+            padding: 12px 18px;
+            font-size: 0.88em;
+            font-weight: 600;
+            color: #718096;
+            text-decoration: none;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .toc-link:hover {
+            color: #667eea;
+            background: #f7fafc;
+        }
+        .toc-link.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+        }
+        @media (max-width: 600px) {
+            .toc-bar { margin: 0 -20px; padding: 0 12px; }
+            .toc-link { padding: 10px 12px; font-size: 0.82em; }
+        }
     </style>
 </head>
 <body>
@@ -460,10 +500,19 @@
         <h1>🎯 The Voice Behind the Words: Quantifying Intersectionality in SpeechLLMs</h1>
         <p class="subtitle">Exploring intersectional bias in Speech LLMs across accents and gender</p>
 
+        <!-- TOC Navigation Bar -->
+        <nav class="toc-bar" id="toc-bar">
+            <a href="#sec-prompts" class="toc-link">📝 Prompts</a>
+            <a href="#sec-judges" class="toc-link">🤖 LLM Judges</a>
+            <a href="#sec-human" class="toc-link">👥 Human Validation</a>
+            <a href="#sec-responses" class="toc-link">📊 Responses</a>
+            <a href="#sec-system-prompt" class="toc-link">💬 System Prompt</a>
+        </nav>
+
         <!-- ═══════════════════════════════════════════════════════════ -->
         <!-- SECTION 1: PROMPTS                                        -->
         <!-- ═══════════════════════════════════════════════════════════ -->
-        <div class="section">
+        <div class="section" id="sec-prompts">
             <div class="section-header" onclick="toggleSection('prompts')">
                 <span class="toggle-icon open" id="icon-prompts">▶</span>
                 <h2>📝 The Speech Test Suite &mdash; Prompts</h2>
@@ -614,7 +663,7 @@
         <!-- ═══════════════════════════════════════════════════════════ -->
         <!-- SECTION 2: LLM JUDGES                                     -->
         <!-- ═══════════════════════════════════════════════════════════ -->
-        <div class="section">
+        <div class="section" id="sec-judges">
             <div class="section-header" onclick="toggleSection('judges')">
                 <span class="toggle-icon open" id="icon-judges">▶</span>
                 <h2>🤖 LLM Judge Evaluation</h2>
@@ -699,7 +748,7 @@
         <!-- ═══════════════════════════════════════════════════════════ -->
         <!-- SECTION 3: HUMAN VALIDATION                               -->
         <!-- ═══════════════════════════════════════════════════════════ -->
-        <div class="section">
+        <div class="section" id="sec-human">
             <div class="section-header" onclick="toggleSection('human')">
                 <span class="toggle-icon open" id="icon-human">▶</span>
                 <h2>👥 Human Validation Study</h2>
@@ -766,7 +815,7 @@
         <!-- ═══════════════════════════════════════════════════════════ -->
         <!-- SECTION 4: RESPONSES (original content)                   -->
         <!-- ═══════════════════════════════════════════════════════════ -->
-        <h2 style="color: #2d3748; margin-top: 10px;">📊 The Speech Test Suite &mdash; SpeechLLM Responses</h2>
+        <h2 id="sec-responses" style="color: #2d3748; margin-top: 10px;">📊 The Speech Test Suite &mdash; SpeechLLM Responses</h2>
         <p style="color: #718096; font-size: 1.1em; margin-bottom: 20px;">Explore all SpeechLLM responses through interactive PCA visualisations below.</p>
         
         <div class="stats">
@@ -852,7 +901,7 @@
             </ul>
         </div>
         
-        <div class="info-box" style="margin-top: 40px; border-left-color: #764ba2;">
+        <div id="sec-system-prompt" class="info-box" style="margin-top: 40px; border-left-color: #764ba2;">
             <h3>💬 System Prompt Used for SpeechLLMs</h3>
             <p style="color:#4a5568; margin-bottom:10px;">All three SpeechLLMs received the same minimal system prompt alongside each audio input:</p>
             <div style="background:#1a1a2e; color:#e2e8f0; font-family:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace; padding:14px 18px; border-radius:6px; font-size:0.95em; line-height:1.6;">
@@ -899,6 +948,29 @@
         ['prompts', 'judges', 'human'].forEach(function(id) {
             var body = document.getElementById('body-' + id);
             if (body) body.style.maxHeight = body.scrollHeight + 'px';
+        });
+
+        // Highlight active TOC link on scroll
+        var sections = document.querySelectorAll('[id^="sec-"]');
+        var tocLinks = document.querySelectorAll('.toc-link');
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    tocLinks.forEach(function(l) { l.classList.remove('active'); });
+                    var link = document.querySelector('.toc-link[href="#' + entry.target.id + '"]');
+                    if (link) link.classList.add('active');
+                }
+            });
+        }, { rootMargin: '-80px 0px -60% 0px', threshold: 0 });
+        sections.forEach(function(s) { observer.observe(s); });
+
+        // Smooth scroll for TOC links
+        tocLinks.forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                var target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
         });
     });
     </script>
